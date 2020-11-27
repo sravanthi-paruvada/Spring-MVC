@@ -37,23 +37,16 @@ public class BookController {
 		return mv;
 	}
 
-	// we want to write code to add the book
-	// ====================================
-	// get
+	
 	@GetMapping("addbook")
 	public String addBookGet(ModelMap map) {
 		Book book = new Book();
 		book.setAuthor("raj");
-		// form bean :write now its empty
-		// now i want to bind this object with the page...so that when user type
-		// something is should be avaiable to that bean
-
 		map.addAttribute("book", book);
 		return "addbook";
 	}
 
-	// post
-	@PostMapping("addbook")
+		@PostMapping("addbook")
 	public String addBookPost(@ModelAttribute(name = "book") Book book) {
 
 		int id = book.getId();
@@ -66,8 +59,7 @@ public class BookController {
 
 	}
 
-	// we want to do update operation
-	// ==============================
+	
 	@GetMapping("updatebook")
 	public String updateBookGet(HttpServletRequest req, ModelMap map) {
 		int id = Integer.parseInt(req.getParameter("id"));
@@ -80,8 +72,6 @@ public class BookController {
 	public String delBook(HttpServletRequest req) {
 		int id = Integer.parseInt(req.getParameter("id"));
 		bookService.deleteBook(id);
-		// return "allbooks"; // this will not work.. it will only do request dispached
-		// to page allbooks.jsp
 		return "redirect:/allbooks";
 	}
 
