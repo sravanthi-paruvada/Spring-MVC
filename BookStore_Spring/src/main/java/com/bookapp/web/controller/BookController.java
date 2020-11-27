@@ -41,7 +41,6 @@ public class BookController {
 	@GetMapping("addbook")
 	public String addBookGet(ModelMap map) {
 		Book book = new Book();
-		book.setAuthor("raj");
 		map.addAttribute("book", book);
 		return "addbook";
 	}
